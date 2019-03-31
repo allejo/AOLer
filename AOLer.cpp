@@ -147,7 +147,7 @@ void AOLer::InitDictionary()
     multiWordTranslation["they're"].push_back("there");
 }
 
-void AOLer::Init (const char* commandLine)
+void AOLer::Init (const char* /*commandLine*/)
 {
     InitDictionary();
 
@@ -168,7 +168,7 @@ void AOLer::Event (bz_EventData *eventData)
         {
             bz_ChatEventData_V1* chatData = (bz_ChatEventData_V1*)eventData;
 
-            if (rand() % 100 < 65)
+            if (rand() % 100 < 75)
             {
                 chatData->message = aoler(chatData->message.c_str());
             }
@@ -181,8 +181,8 @@ void AOLer::Event (bz_EventData *eventData)
 
 std::string AOLer::aoler(const char* _message)
 {
-    int i = 0;
-    int wordsToSkip = 0;
+    unsigned int i = 0;
+    unsigned int wordsToSkip = 0;
     std::string message = bz_tolower(_message);
     std::string output;
 
@@ -222,8 +222,8 @@ std::string AOLer::aoler(const char* _message)
         }
         else
         {
-            int j = 0;
-            int lettersToSkip = 0;
+            unsigned int j = 0;
+            unsigned int lettersToSkip = 0;
 
             for (char &c : word)
             {
